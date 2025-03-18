@@ -1,0 +1,43 @@
+/**
+ *
+ * @author Mattias Nygren Jiménez
+ * @version 1.0
+ */
+public class Primo {
+    //----------------------------------------------
+    //       Declaración de campos constantes
+    //----------------------------------------------
+    private final int iVALOR;
+    //----------------------------------------------
+    //       Declaración de campos
+    //----------------------------------------------
+    private static int iSigPrimo = 2;
+    //----------------------------------------------
+    //       Declaración de constructores
+    //----------------------------------------------
+    public Primo() {
+        boolean bEsPrimo = true;
+
+        this.iVALOR = Primo.iSigPrimo;
+        do {
+            Primo.iSigPrimo++;
+            bEsPrimo = true;
+            for (int q = 2; q < Primo.iSigPrimo; q++) {
+                if (Primo.iSigPrimo % q == 0) {
+                    bEsPrimo = false;
+                    break;
+                }
+            }
+        } while (!bEsPrimo);
+    }
+    //----------------------------------------------
+    //       Declaración de métodos
+    //----------------------------------------------
+    public int obtenerValor() {
+        return this.iVALOR;
+    }
+
+    public void inicializar() {
+        return this.iSigPrimo = 2;
+    }
+}
