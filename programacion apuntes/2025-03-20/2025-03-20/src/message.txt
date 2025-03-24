@@ -1,0 +1,90 @@
+Swing
+Ventanas principales en java:
+JFrame JDialog JApplet
+Como se define una ventana: 
+Se crean como campos y se crea un objeto de la clase para acceder a estos.
+JFrame
+public class ventana implements ActionListeners {
+//CAMPOS
+private JFrame ventana;
+private JPanel panelCnt;
+private JLabel etiq;
+//Métodos
+public static void main (String []args){
+Ventana app = new Ventana();
+app.ventana = new JFrame(“Mi ventana”);
+app.ventana.setSize(new Dimension(400, 200));
+app.ventana.setResizable(false);
+app.ventana.setLocationRelativeTo(null);
+app.ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+app.panelCnt = new JPanel(
+new BorderLayout(1)
+);
+app.ventana.setContentPane(app.panelCnt);
+app.etiq = new JLabel(“Hola”);
+app.panelCnt.add(app.etiq, BorderLayout.CENTER);
+app.ventana.setVisible(true)
+}
+}
+JDialog
+	//JDialog
+//CAMPOS
+private JDialog ventana2;
+private JPanel panelCnt2;
+private JLabel etiq2;
+//Métodos
+public static void main (String []args){
+Ventana app = new Ventana();
+app.ventana2 = new JDialog(app.ventana);
+app.ventana2.setSize(new Dimension(300, 150));
+app.ventana2.setResizable(false);
+app.ventana2.setLocationRelativeTo(app.ventana1);
+app.ventana2.setDefaultCloseOperation(JFrame.DISPLAYS_ON_CLOSE);
+
+app.panelCnt = new JPanel(
+new BorderLayout(1)
+);
+app.ventana2.setContentPane(app.panelCnt2);
+app.etiq2 = new JLabel(“Estas dentro de un diálogo”);
+app.panelCnt2.add(app.etiq2, BorderLayout.CENTER);
+// app.ventana2.setVisible(true);
+}
+}
+Al dialogo no se le puede poner EXIT_ON_CLOSE porque esto ya está asignado a la ventana principal. Un diálogo depende de otra ventana.
+
+Botón para llamar a un diálogo con la clase anterior:
+	private JButton boton;	
+	app.boton = new JButton(“Pulsame”);
+	app.boton.addActionListener(app)
+	app.pnlCnt.add(app.boton, BorderLayout(CENTER))
+
+// Le tenemos que decir a la clase que implementa ActionListeners	
+
+	@Override //implementamos el método que nos obliga la implementación
+	public void ActionPerformed(ActionEvent){
+	app.ventana2.setVisible(true);
+}
+
+Diálogos prediseñados de java
+Consultas con el usuario:
+JOptionPane.showInputDialog(app.ventana (se le pone la ventana padre), “”Dime tu edad” (mensaje que quieres que vea el usuario), “Consulta al usuario” (titulo del mensaje), JOptionPane.QUESTION_MESSAGE (tipo de mensaje));
+
+Si se acepta devuelve un String y si se cancela devuelve null
+
+Existen diferentes tipos como el de confirmación:
+JOptionPane.showConfirmDialog(app.ventana, “¿Estas seguro?”, “Salida del programa”, JOptionPane.YES_NO_OPTION)
+
+Gestores de disposición
+Controlan la ubicación de los componentes.
+Clase BorderLayout
+Esquema más complejo de colocación de los componentes. (notre, sur, este, oeste, centro).
+Siguiendo la estructura de la clase ventana anterior vamos a crear 5 botones en cada posición.
+
+	private JButton[] aBotones;
+	String[] aPosiciones = {BorderLayout.NORTH, …}
+	app.aBotones = new JButton[5]
+	for (int i = 0; i < app.aBotones.lenght; i++){
+		app.aBotones[q] = new JButton(String.toFormat(“Boton ”, i));
+		app.pnlCnt.add(app.botones[q]);
+}
