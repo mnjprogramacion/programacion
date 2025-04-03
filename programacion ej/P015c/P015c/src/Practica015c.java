@@ -1,12 +1,11 @@
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import javax.swing.*;
 
 /**
  *
  * @author Mattias Nygren Jiménez
- * @version 1.0
+ * @version 2.0
  */
 public class Practica015c {
     //----------------------------------------------
@@ -88,11 +87,12 @@ public class Practica015c {
 
         app.texto1 = new JTextField(10);
         app.panelGL.add(app.texto1);
-        app.texto2 = new JTextField();
+        app.texto2 = new JTextField(10);
+        
         app.panelGL.add(app.texto2);
-        app.texto3 = new JTextField();
+        app.texto3 = new JTextField(10);
         app.panelGL.add(app.texto3);
-        app.texto4 = new JTextField();
+        app.texto4 = new JTextField(10);
         app.panelGL.add(app.texto4);
 
         app.boton = new JButton("Calcular");
