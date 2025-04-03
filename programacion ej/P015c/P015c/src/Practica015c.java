@@ -5,7 +5,11 @@ import javax.swing.*;
 /**
  *
  * @author Mattias Nygren Jiménez
+<<<<<<< HEAD
  * @version 2.0
+=======
+ * @version 3.0
+>>>>>>> dd87a7e6f8ee9e44570b562f75a8135751fb34dc
  */
 public class Practica015c {
     //----------------------------------------------
@@ -26,7 +30,8 @@ public class Practica015c {
             String num2string = texto2.getText();
             String num3string = texto3.getText();
             String num4string = texto4.getText();
-            int iNum1, iNum2, iNum3, iNum4;
+            String mensaje;
+            int iNum1, iNum2, iNum3, iNum4, iResultado;
             boolean bNumInvalido = false;
             try {
                 iNum1 = Integer.parseInt(num1string);
@@ -40,8 +45,7 @@ public class Practica015c {
                 iNum4 = 0;
                 bNumInvalido = true;
             }
-            int iResultado = iNum1 + iNum2 + iNum3 + iNum4;
-            String mensaje;
+            iResultado = iNum1 + iNum2 + iNum3 + iNum4;
 
             if (!bNumInvalido) {
                 mensaje = String.format("El resultado del cálculo es: %d", iResultado);
@@ -73,7 +77,7 @@ public class Practica015c {
         app.panelBL = new JPanel(new BorderLayout(10, 10));
         app.ventana.setContentPane(app.panelBL);
 
-        app.etiqueta = new JLabel("Cáclculos matemáticos");
+        app.etiqueta = new JLabel("Cálculos matemáticos");
         app.etiqueta.setHorizontalTextPosition(JLabel.CENTER);
         app.etiqueta.setVerticalTextPosition(JLabel.TOP);
         app.etiqueta.setHorizontalAlignment(JLabel.CENTER);
@@ -86,13 +90,24 @@ public class Practica015c {
         app.panelBL.add(app.panelGL, BorderLayout.CENTER);
 
         app.texto1 = new JTextField(10);
+        app.texto1.setHorizontalAlignment(JTextField.RIGHT);
         app.panelGL.add(app.texto1);
         app.texto2 = new JTextField(10);
+<<<<<<< HEAD
         
         app.panelGL.add(app.texto2);
         app.texto3 = new JTextField(10);
         app.panelGL.add(app.texto3);
         app.texto4 = new JTextField(10);
+=======
+        app.texto2.setHorizontalAlignment(JTextField.RIGHT);
+        app.panelGL.add(app.texto2);
+        app.texto3 = new JTextField(10);
+        app.texto3.setHorizontalAlignment(JTextField.RIGHT);
+        app.panelGL.add(app.texto3);
+        app.texto4 = new JTextField(10);
+        app.texto4.setHorizontalAlignment(JTextField.RIGHT);
+>>>>>>> dd87a7e6f8ee9e44570b562f75a8135751fb34dc
         app.panelGL.add(app.texto4);
 
         app.boton = new JButton("Calcular");
