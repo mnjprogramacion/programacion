@@ -1,6 +1,5 @@
 import java.sql.*;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -9,29 +8,10 @@ import javax.swing.JOptionPane;
  * @version 1.0
  */
 public class Practica014d {
-    //----------------------------------------------
-    //       Declaración de campos constantes
-    //----------------------------------------------
-
-    //----------------------------------------------
-    //       Declaración de campos
-    //----------------------------------------------
-      
-    //----------------------------------------------
-    //       Declaración de constructores
-    //----------------------------------------------
-
-    //----------------------------------------------
-    //       Declaración de métodos
-    //----------------------------------------------
     /**
      * @param args Argumentos de la línea de comandos
      */
     public static void main(String[] args) {
-        //----------------------------------------------
-        //     Declaración de constantes
-        //----------------------------------------------
-
         //----------------------------------------------
         //     Declaración de variables 
         //----------------------------------------------
@@ -41,10 +21,10 @@ public class Practica014d {
         Statement sentencia = null;
         PreparedStatement sentenciaPrepInsert = null, sentenciaPrepVoto = null, sentenciaPrepAdd = null, sentenciaPrepNombre = null;
         ResultSet resultado;
-        String votaciones = "votaciones", nombre;
+        String nombre;
         int iNumPart = 1, iNumVotos;
         //----------------------------------------------
-        //     Entrada de datos 
+        //     Entrada de datos + Procesamiento
         //----------------------------------------------
         try {
             Class.forName("org.mariadb.jdbc.Driver");
@@ -61,18 +41,8 @@ public class Practica014d {
         }
 
         try {
-
             do {
-                try {
-                    resultado = sentencia.executeQuery("USE votaciones;");
-                    resultado = sentencia.executeQuery("SELECT MAX(idParticipante) FROM votaciones.votos;");
-                    resultado.next();
-                    iNumPart = resultado.getInt(1) + 1;
-                } catch (SQLException e) {
-                    sentencia.executeUpdate("CREATE DATABASE votaciones;");
-                    sentencia.executeUpdate("CREATE TABLE votaciones.votos(idParticipante INT NOT NULL PRIMARY KEY, nombre VARCHAR(50) NOT NULL, numVotos INT);");
-                    iNumPart = 1;
-                }
+                
                 nombre = JOptionPane.showInputDialog(null, "Dime tu nombre.");
                 if (nombre.isBlank()) { break; }
                 sentenciaPrepNombre.setString(1, nombre);
@@ -107,14 +77,9 @@ public class Practica014d {
                 System.exit(1);
             }
             conexion.commit();
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ERROR: Actualización número de votos.", "ERROR", JOptionPane.ERROR_MESSAGE);
             System.exit(1);
         }
-        
-        //----------------------------------------------
-        //     Procesamiento + Salida de resultados
-        //----------------------------------------------
     }
 }
